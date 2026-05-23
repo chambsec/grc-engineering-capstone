@@ -1,0 +1,13 @@
+﻿# Terraform providers and plugins
+**/.terraform/
+
+# State files (contain sensitive data)
+*.tfstate
+*.tfstate.backup
+
+# Plan files
+tfplan
+*.tfplan
+
+# Lock file
+.terraform.lock.hcl
