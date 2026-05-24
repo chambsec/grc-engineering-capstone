@@ -35,3 +35,11 @@ module "data_bucket" {
 - `bucket_self_link` — self-link for IAM bindings
 - `kms_key_id` — CMEK resource ID
 - `compliance_attestation` — machine-readable map of all control values
+
+## AWS variants
+
+| File | Control | Cloud | What it catches |
+|------|---------|-------|----------------|
+| `sc28_encryption_aws.rego` | SC-28 | AWS | S3 buckets missing server-side encryption config |
+| `ac3_no_public_aws.rego` | AC-3 | AWS | S3 buckets missing or incomplete public access block |
+| `cm6_required_tags_aws.rego` | CM-6 | AWS | Resources missing required tags (checks tags_all) |
