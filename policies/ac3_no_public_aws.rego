@@ -25,27 +25,16 @@ bucket_addresses contains addr if {
 }
 
 has_complete_pab(bucket_addr) if {
-	pab := pab_for(bucket_addr)
-	planned := pab_planned_values(pab.address)
-	planned.block_public_acls == true
-	planned.block_public_policy == true
-	planned.ignore_public_acls == true
-	planned.restrict_public_buckets == true
-}
-
-pab_for(bucket_addr) := pab if {
 	some r in input.configuration.root_module.resources
 	r.type == "aws_s3_bucket_public_access_block"
 	some ref in r.expressions.bucket.references
 	pab_references_bucket(ref, bucket_addr)
-	pab := {"address": sprintf("aws_s3_bucket_public_access_block.%s", [r.name])}
+	expr := r.expressions
+	expr.block_public_acls.constant_value == true
+	expr.block_public_policy.constant_value == true
+	expr.ignore_public_acls.constant_value == true
+	expr.restrict_public_buckets.constant_value == true
 }
 
 pab_references_bucket(ref, bucket_addr) if ref == bucket_addr
 pab_references_bucket(ref, bucket_addr) if ref == sprintf("%s.id", [bucket_addr])
-
-pab_planned_values(addr) := values if {
-	some r in input.planned_values.root_module.resources
-	r.address == addr
-	values := r.values
-}
