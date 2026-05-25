@@ -1,0 +1,17 @@
+terraform {
+  required_version = ">= 1.6"
+  required_providers {
+    google = { source = "hashicorp/google", version = "~> 5.0" }
+  }
+}
+
+provider "google" {
+  project               = var.gcp_project
+  region                = "us-central1"
+  billing_project       = var.gcp_project
+  user_project_override = true
+}
+
+data "google_project" "this" {
+  project_id = var.gcp_project
+}

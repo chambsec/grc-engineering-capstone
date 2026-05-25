@@ -1,0 +1,26 @@
+# Org Policy requires org-level permissions not available in standalone projects.
+# These policies would be applied at the org or folder scope in a production environment.
+
+# resource "google_org_policy_policy" "uniform_bucket_access" {
+#   name   = "projects/${var.gcp_project}/policies/storage.uniformBucketLevelAccess"
+#   parent = "projects/${var.gcp_project}"
+#   spec {
+#     rules { enforce = "TRUE" }
+#   }
+# }
+
+# resource "google_org_policy_policy" "disable_sa_keys" {
+#   name   = "projects/${var.gcp_project}/policies/iam.disableServiceAccountKeyCreation"
+#   parent = "projects/${var.gcp_project}"
+#   spec {
+#     rules { enforce = "TRUE" }
+#   }
+# }
+
+# resource "google_org_policy_policy" "require_oslogin" {
+#   name   = "projects/${var.gcp_project}/policies/compute.requireOsLogin"
+#   parent = "projects/${var.gcp_project}"
+#   spec {
+#     rules { enforce = "TRUE" }
+#   }
+# }
