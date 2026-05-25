@@ -104,7 +104,7 @@ jobs:
           cp ${{ env.TF_WORKING_DIR }}/plan.json evidence/plan.json
           cp ${{ env.TF_WORKING_DIR }}/plan.txt  evidence/plan.txt
 
-- name: Bundle + sign + upload to vault
+      - name: Bundle + sign + upload to vault
         id: sign
         if: always()
         env:
