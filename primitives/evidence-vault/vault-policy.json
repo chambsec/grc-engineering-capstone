@@ -1,0 +1,11 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [{
+    "Effect": "Allow",
+    "Action": ["s3:PutObject", "s3:GetObject", "s3:GetBucketLocation"],
+    "Resource": [
+      "arn:aws:s3:::cgep-lab-grc-evidence-vault-95715f3d",
+      "arn:aws:s3:::cgep-lab-grc-evidence-vault-95715f3d/*"
+    ]
+  }]
+}
